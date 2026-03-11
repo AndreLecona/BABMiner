@@ -12,6 +12,11 @@ A Python tool for identifying and extracting β-α-β (beta-alpha-beta) protein 
   - Metadata CSV (`metadata.csv`)
 - **Rich analysis**: Secondary structure, hydrogen bonding, strand orientation, handedness, sequence coverage
 
+
+## Algorithm Overview
+
+![BABMiner Algorithm](BABMiner.jpg)
+
 ## Installation
 
 ```bash
@@ -101,19 +106,6 @@ motifs, coverage = bab_finder(dssp, model, angle_threshold=40, min_bonds=2)
 for motif in motifs:
     print(f"Chain {motif['chain']}: {motif['orientation']}")
 ```
-
-## Algorithm Overview
-
-![BABMiner Algorithm](BABMiner.jpg)
-
-The algorithm pipeline:
-
-1. Load PDB and compute DSSP secondary structure
-2. Identify contiguous β-strands (≥3 residues)
-3. Calculate hydrogen bonds and angles between strands
-4. Build graph of connected strands
-5. Find β-α-β sequence patterns
-6. Filter and compute orientation/handedness
 
 ## License
 
