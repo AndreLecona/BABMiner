@@ -107,6 +107,32 @@ for motif in motifs:
     print(f"Chain {motif['chain']}: {motif['orientation']}")
 ```
 
+## Optional Tools
+
+### cleanpdb: PDB Preprocessing Utility
+
+`cleanpdb` is an optional standalone tool for cleaning and preprocessing PDB files for DSSP secondary structure analysis. It is automatically installed with BABMiner but is not part of the main analysis pipeline. Use when DSSP fails to process your files.
+
+**Features:**
+- Removes non-standard amino acids
+- Keeps only the first model
+- Normalizes MSE → MET, SEC → CYS
+- Removes unecessary heder infromation
+- Parallel processing for efficiency
+
+**Usage:**
+
+```bash
+# Clean a single PDB file
+cleanpdb protein.pdb --outdir cleaned/
+
+# Clean a directory of PDB files in parallel
+cleanpdb pdb_directory/ --outdir cleaned/ -p 8
+
+# Show help
+cleanpdb --help
+```
+
 ## License
 
 GNU General Public License v3 (see LICENSE file)

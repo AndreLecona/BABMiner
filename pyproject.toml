@@ -38,6 +38,7 @@ Issues = "https://github.com/AndreLecona/BABMiner/issues"
 
 [project.scripts]
 babminer = "BABMiner.cli:main"
+cleanpdb = "BABMiner.clean_pdbs:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
