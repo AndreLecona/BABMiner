@@ -46,7 +46,7 @@ Examples:
     parser.add_argument(
         "-p", "--processes",
         type=int,
-        default=None,
+        default=1,
         help="Number of parallel processes (default: auto-detect CPU count)"
     )
     
@@ -101,8 +101,6 @@ def main(argv=None):
     
     # Determine number of processes
     num_processes = args.processes
-    if num_processes is None:
-        num_processes = min(32, (os.cpu_count() or 4) * 2)
     
     if args.verbose:
         print(f"[*] Using {num_processes} process(es)")

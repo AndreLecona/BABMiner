@@ -4,7 +4,7 @@ A CLI tool for identifying and extracting beta-alpha-beta protein motifs from PD
 """
 
 __version__ = "1.0.0"
-__author__ = "[YOUR_NAME]"
+__author__ = "Andre Lecona Buttelli"
 
 from .finder import bab_finder
 
