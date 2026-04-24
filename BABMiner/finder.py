@@ -64,9 +64,9 @@ def filter_true_babs(bab_list, G, beta_segments, bond_info, model, dssp):
         beta1_range = get_beta_range(beta_segments, seg_start)
         beta2_range = get_beta_range(beta_segments, seg_end)
         segment_length = pos_end - pos_start - 1
-        
+
         orientation = determine_orientation(angles)
-        bab_sequence = extract_sequence_from_dssp(dssp, pos_start, pos_end)
+        bab_sequence = extract_sequence_from_dssp(dssp, beta1_range[0], beta2_range[1]) #changed pos_start and pos_end to seg_start and seg_end
         orientation_str = "parallel" if orientation == 0 else "antiparallel"
         
         handedness = None

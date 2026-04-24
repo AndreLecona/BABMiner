@@ -10,14 +10,6 @@ from glob import glob
 def get_pdb_code_from_file(pdb_file):
     """Extract PDB code from file header or use filename."""
     filename_code = os.path.splitext(os.path.basename(pdb_file))[0]
-    try:
-        with open(pdb_file, "r") as fh:
-            for line in fh:
-                if line.startswith("HEADER"):
-                    code = line[62:66].strip()
-                    return code if code else filename_code
-    except Exception:
-        pass
     return filename_code
 
 

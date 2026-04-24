@@ -443,8 +443,8 @@ def extract_sequence_from_dssp(dssp, pos_start, pos_end):
     """
     keys = sorted(dssp.keys())
     seq = []
-    
-    for i in range(pos_start, pos_end + 1):
+
+    for i in range(pos_start-keys[0][1][1], pos_end-keys[0][1][1]+1):
         aa = dssp[keys[i]][1]
         if aa not in ('!', 'X'):
             seq.append(aa)
