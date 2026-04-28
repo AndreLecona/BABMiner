@@ -428,7 +428,6 @@ def extract_path_info(G, bond_info, seg_start, seg_end):
     
     return path, distance, angles, bonds
 
-
 def extract_sequence_from_dssp(dssp, pos_start, pos_end):
     """
     Extract amino acid sequence from DSSP positions.
@@ -442,13 +441,13 @@ def extract_sequence_from_dssp(dssp, pos_start, pos_end):
         str: Single-letter amino acid sequence
     """
     keys = sorted(dssp.keys())
-    seq = []
+    res_map = {key[1][1]: dssp[key][1] for key in keys}
 
-    for i in range(pos_start-keys[0][1][1], pos_end-keys[0][1][1]+1):
-        aa = dssp[keys[i]][1]
-        if aa not in ('!', 'X'):
-            seq.append(aa)
-        else:
-            seq.append('X')  # Keep length consistent
-    
+    seq = []
+    for resnum in range(pos_start, pos_end + 1):
+        aa = res_map.get(resnum, 'X')
+        if aa in ('!', 'X'):
+            aa = 'X'
+        seq.append(aa)
+
     return ''.join(seq)
